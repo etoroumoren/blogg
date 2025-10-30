@@ -1,0 +1,72 @@
+{% extends "blog/base.html" %}
+
+{% block title %}My personal blog{% endblock %}
+
+{% block content %}
+<h1>Blog Posts</h1>
+
+{% if drafts %}
+  <div>
+	  <button onclick="toggleDrafts()">
+		  Your Drafts ({{ drafts|length }})
+		  <span id="arrow">▼</span>
+	  </button>
+
+	  <div id="drafts-section">
+		  <h3>Your Drafts</h3>
+		  {% for draft in drafts %}
+		    <div>
+			    <strong>{{ draft.title }}</strong>
+			    <span>(Draft)</span>
+			    <div>
+				    <a href="{% url 'blog:post_edit' draft.slug %}">Edit</a>
+				    <a href="{% url 'blog:post_edit' draft.slug %}">Edit</a>
+				    <a href="{% url 'blog:post_delete' draft.slug %}">Delete</a>
+			    </div>
+		    </div>
+		  {% endfor %}
+	    </div>
+  </div>
+
+  <script>
+function toggleDrafts() {
+  let draftsSection = document.getElementById('drafts-section');
+  let arrow = document.getElementById('arrow');
+
+  if (draftsSection.style.display === 'none') {
+    draftsSection.style.display = 'block';
+    arrow.textContent = '▲';
+  } else {
+    draftsSection.style.display = 'none';
+    arrow.textContent = '▼';
+  }
+}
+</script>
+{% endif %}
+
+<h2>Published Posts</h2>
+
+{% if posts %}
+  {% for post in posts %}
+    {% if post.slug %}
+      <div>
+	      <h2><a href="{% url 'blog:post_detail' post.slug %}">{{ post.title }}</a></h2>
+	      <p><small>By {{ post.author.username }} | {{ post.created|date:"F d, Y" }}</small></p>
+	      <p>{{ post.content|truncatewords:30 }}</p>
+
+	      {% if user == post.author %}
+	        <a href="{% url 'blog:post_edit' post.slug %}">Edit</a>
+	        <a href="{% url 'blog:post_delete' post.slug %}">Delete</a>
+	      {% endif %}
+      </div>
+    {% endif %}
+  {% endfor %}
+{% else %}
+  <p>No published posts yet. {% if user.is_authenticated %}<a href="{% url 'blog:post_create' %}">Create one!</a>{% endif %}</p>
+{% endif %}
+
+{% if user.is_authenticated %}
+  <h2>You can create a new post <a href="{% url 'blog:post_create' %}">Here</a></h2>
+{% endif %}
+
+{% endblock %}

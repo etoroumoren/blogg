@@ -1,4 +1,6 @@
 from django.contrib.auth.decorators import login_required
+from django.contrib import messages
+from django.db.models import Q
 from django.shortcuts import get_object_or_404, redirect, render
 from .models import Post, Comment
 from .forms import CommentForm, PostForm
@@ -6,17 +8,32 @@ from .forms import CommentForm, PostForm
 # Create your views here.
 
 def post_list(request):
-    posts = Post.published.all()
+    published_posts = Post.published.all()
+
+    user_drafts = []
+    if request.user.is_authenticated:
+        user_drafts = Post.objects.filter(author=request.user, status='draft')
 
     return render(
         request,
         'blog/post_list.html',
-        {'posts': posts}
+        {
+            'posts': published_posts,
+            'drafts': user_drafts,
+        }
     )
 
 
 def post_detail(request, slug):
-    post = get_object_or_404(Post.published, slug=slug)
+    if request.user.is_authenticated:
+        post = get_object_or_404(
+            Post,
+            Q(status='published') | Q(author=request.user),
+            slug=slug
+        )
+    else:
+        post = get_object_or_404(Post.published, slug=slug)
+
     comments = post.comments.filter(approved=True)
 
     if request.method == 'POST':
@@ -27,6 +44,7 @@ def post_detail(request, slug):
             comment.author = request.user
             comment.approved = False
             comment.save()
+            messages.success(request, 'Your comment has been submitted and is awaiting approval.')
             return redirect(post.get_absolute_url())
     else:
         comment_form = CommentForm()
@@ -50,6 +68,12 @@ def post_create(request):
             post = form.save(commit=False)
             post.author = request.user
             post.save()
+
+            if post.status == 'published':
+                messages.success(request, f'Post "{post.title}" published successfully!')
+            else:
+                messages.success(request, f'Draft "{post.title}" saved successfully!')
+
             return redirect(post.get_absolute_url())
 
     else:
@@ -74,6 +98,11 @@ def post_edit(request, slug):
         form = PostForm(request.POST, instance=post)
         if form.is_valid():
             form.save()
+
+            if post.status == 'published':
+                messages.success(request, f'Post "{post.title}" published successfully!')
+            else:
+                messages.success(request, f'Draft "{post.title}" updated successfully!')
             return redirect(post.get_absolute_url())
     else:
         form = PostForm(instance=post)
@@ -98,6 +127,7 @@ def post_delete(request, slug):
 
     if request.method == 'POST':
         post.delete()
+        messages.success(request, f'Post "{post.title}" deleted successfully!')
         return redirect('blog:post_list')
 
     return render(
