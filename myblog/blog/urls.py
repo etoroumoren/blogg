@@ -44,6 +44,7 @@ urlpatterns = [
 
     path('dashboard/', views.dashboard, name='dashboard'),
     path('register/', views.register, name='register'),
+    path('edit/', views.edit, name='edit'),
 
     path('create/', views.post_create, name='post_create'),
     path('<slug:slug>/', views.post_detail, name='post_detail'),

@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Post, Comment
+from .models import Comment, Post, Profile
 
 # Register your models here.
 
@@ -25,3 +25,9 @@ class CommentAdmin(admin.ModelAdmin):
         queryset.update(approved=True)
 
     approve_comments.short_description = "Approve selected comments"
+
+
+@admin.register(Profile)
+class ProfileAdmin(admin.ModelAdmin):
+    list_display = ['user', 'date_of_birth', 'photo']
+    raw_id_fields = ['user']
