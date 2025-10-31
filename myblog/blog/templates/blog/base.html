@@ -1,11 +1,41 @@
+{% load static %}
 <!doctype html>
 <html lang="en-US">
   <head>
-	  <link rel="stylesheet" href="style.css">
-
 	  <title>{% block title %}My Blog{% endblock %}</title>
+	  <link href="{% static "css/base.css" %}" rel="stylesheet">
   </head>
   <body>
-	  {% block content %}{% endblock %}
+	  <div>
+		  <span>Blogg</span>
+		  {% if request.user.is_authenticated %}
+		    <ul>
+			    <li {% if section == "dashboard" %}class="selected"{% endif %}>
+				    <a href="{% url "blog:dashboard" %}">My Dashboard</a>
+			    </li>
+			    <li {% if section == "images" %}class="selected"{% endif %}>
+				    <a href="#">Images</a>
+			    </li>
+			    <li {% if section == "people" %}class="selected"{% endif %}>
+				       <a href="#">People</a>
+			    </li>
+		    </ul>
+		  {% endif %}
+		  <span>
+			  {% if request.user.is_authenticated %}
+			    Hello {{ request.user.first_name|default:request.user.username }},
+			    <form action="{% url "blog:logout" %}" method="post">
+				    <button type="submit">Logout</button>
+				    {% csrf_token %}
+			    </form>
+			  {% else %}
+			    <a href="{% url "blog:login" %}">Log-in</a>
+			  {% endif %}
+		  </span>
+
+	  </div>
+	  <div>
+		  {% block content %}{% endblock %}
+	  </div>
   </body>
 </html>
