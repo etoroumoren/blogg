@@ -40,3 +40,6 @@ class CommentForm(forms.ModelForm):
         labels = {
             'content': 'Your Comment',
         }
+
+
+

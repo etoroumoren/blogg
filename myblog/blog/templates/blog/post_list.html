@@ -68,5 +68,6 @@ function toggleDrafts() {
 {% if user.is_authenticated %}
   <h2>You can create a new post <a href="{% url 'blog:post_create' %}">Here</a></h2>
 {% endif %}
+{% include "pagination.html" with page=posts %}
 
 {% endblock %}

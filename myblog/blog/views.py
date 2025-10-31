@@ -1,5 +1,8 @@
+from django.contrib.auth import login, authenticate
+from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
+from django.core.paginator import EmptyPage, PageNotAnInteger, Paginator
 from django.db.models import Q
 from django.shortcuts import get_object_or_404, redirect, render
 from .models import Post, Comment
@@ -8,7 +11,15 @@ from .forms import CommentForm, PostForm
 # Create your views here.
 
 def post_list(request):
-    published_posts = Post.published.all()
+    published_posts = Post.published.exclude(slug="").order_by('-created')
+    paginator = Paginator(published_posts, 3)
+    page_number = request.GET.get('page', 1)
+    try:
+        posts = paginator.page(page_number)
+    except PageNotAnInteger:
+        posts = paginator.page(1)
+    except EmptyPage:
+        posts = paginator.page(paginator.num_pages)
 
     user_drafts = []
     if request.user.is_authenticated:
@@ -18,7 +29,7 @@ def post_list(request):
         request,
         'blog/post_list.html',
         {
-            'posts': published_posts,
+            'posts': posts,
             'drafts': user_drafts,
         }
     )
@@ -137,3 +148,6 @@ def post_delete(request, slug):
             'post': post
         }
     )
+
+
+
