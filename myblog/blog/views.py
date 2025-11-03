@@ -4,7 +4,10 @@ from django.contrib import messages
 from django.core.paginator import EmptyPage, PageNotAnInteger, Paginator
 from django.db.models import Q
 from django.shortcuts import get_object_or_404, redirect, render
+import markdown
+from django.utils.safestring import mark_safe
 from .models import Comment, Post, Profile
+from taggit.models import Tag
 from .forms import (
     CommentForm,
     LoginForm,
@@ -83,8 +86,14 @@ def edit(request):
         }
     )
 
-def post_list(request):
+def post_list(request, tag_slug=None):
     published_posts = Post.published.exclude(slug="").order_by('-created')
+
+    tag = None
+    if tag_slug:
+        tag = get_object_or_404(Tag, slug=tag_slug)
+        published_posts = published_posts.filter(tags__in=[tag])
+
     paginator = Paginator(published_posts, 3)
     page_number = request.GET.get('page', 1)
     try:
@@ -104,6 +113,7 @@ def post_list(request):
         {
             'posts': posts,
             'drafts': user_drafts,
+            'tag': tag
         }
     )
 
@@ -118,6 +128,11 @@ def post_detail(request, slug):
     else:
         post = get_object_or_404(Post.published, slug=slug)
 
+    post.content_html = mark_safe(markdown.markdown(
+        post.content,
+        extensions=['fenced_code', 'codehilite', 'tables', 'nl2br']
+    ))
+
     comments = post.comments.filter(approved=True)
 
     if request.method == 'POST':
@@ -126,9 +141,9 @@ def post_detail(request, slug):
             comment = comment_form.save(commit=False)
             comment.post = post
             comment.author = request.user
-            comment.approved = False
+            comment.approved = True
             comment.save()
-            messages.success(request, 'Your comment has been submitted and is awaiting approval.')
+            messages.success(request, 'Your comment has been posted.')
             return redirect(post.get_absolute_url())
     else:
         comment_form = CommentForm()
@@ -152,6 +167,7 @@ def post_create(request):
             post = form.save(commit=False)
             post.author = request.user
             post.save()
+            form.save_m2m()
 
             if post.status == 'published':
                 messages.success(request, f'Post "{post.title}" published successfully!')
@@ -221,6 +237,3 @@ def post_delete(request, slug):
             'post': post
         }
     )
-
-
-

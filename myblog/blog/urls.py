@@ -8,6 +8,7 @@ app_name = 'blog'
 urlpatterns = [
     path('', views.post_list, name='post_list'),
 
+
     # Authentication
     # path('login/', views.user_login, name='login'),
     path('login/', auth_views.LoginView.as_view(), name='login'),
@@ -45,6 +46,7 @@ urlpatterns = [
     path('dashboard/', views.dashboard, name='dashboard'),
     path('register/', views.register, name='register'),
     path('edit/', views.edit, name='edit'),
+    path('tag/<slug:tag_slug>/', views.post_list, name='post_list_by_tag'),
 
     path('create/', views.post_create, name='post_create'),
     path('<slug:slug>/', views.post_detail, name='post_detail'),
