@@ -43,7 +43,7 @@ urlpatterns = [
          name='password_reset_complete'
         ),
 
-    path('dashboard/', views.dashboard, name='dashboard'),
+    path('account/', views.account, name='account'),
     path('register/', views.register, name='register'),
     path('edit/', views.edit, name='edit'),
     path('search/', views.post_search, name='post_search'),

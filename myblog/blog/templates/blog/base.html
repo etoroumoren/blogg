@@ -10,8 +10,8 @@
 		  <span>Blogg</span>
 		  {% if request.user.is_authenticated %}
 		    <ul>
-			    <li {% if section == "dashboard" %}class="selected"{% endif %}>
-				    <a href="{% url "blog:dashboard" %}">My Dashboard</a>
+			    <li {% if section == "post_list" %}class="selected"{% endif %}>
+				    <a href="{% url "blog:post_list" %}">My Account</a>
 			    </li>
 			    <li {% if section == "images" %}class="selected"{% endif %}>
 				    <a href="#">Images</a>

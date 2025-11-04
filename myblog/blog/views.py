@@ -24,12 +24,12 @@ from django.http import HttpResponse
 
 
 @login_required
-def dashboard(request):
+def account(request):
     return render(
         request,
-        'blog/dashboard.html',
+        'blog/account.html',
         {
-            'section': 'dashboard'
+            'section': 'account'
         }
     )
 
