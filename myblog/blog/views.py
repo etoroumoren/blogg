@@ -1,6 +1,7 @@
 from django.contrib.auth import login, authenticate
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
+from django.contrib.postgres.search import SearchVector
 from django.core.paginator import EmptyPage, PageNotAnInteger, Paginator
 from django.db.models import Q
 from django.shortcuts import get_object_or_404, redirect, render
@@ -14,7 +15,8 @@ from .forms import (
     PostForm,
     UserRegistrationForm,
     UserEditForm,
-    ProfileEditForm
+    ProfileEditForm,
+    SearchForm,
 )
 from django.http import HttpResponse
 
@@ -235,5 +237,31 @@ def post_delete(request, slug):
         'blog/post_confirm_delete.html',
         {
             'post': post
+        }
+    )
+
+def post_search(request):
+    form = SearchForm()
+    query = None
+    results = []
+
+    if 'query' in request.GET:
+        form = SearchForm(request.GET)
+        if form.is_valid():
+            query = form.cleaned_data['query']
+            results = (
+                Post.published.annotate(
+                    search=SearchVector('title', 'content'),
+                )
+                .filter(search=query)
+            )
+
+    return render(
+        request,
+        'blog/search.html',
+        {
+            'form': form,
+            'query': query,
+            'results': results,
         }
     )

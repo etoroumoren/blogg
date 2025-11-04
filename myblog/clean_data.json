@@ -1,0 +1,433 @@
+[
+{
+  "model": "auth.user",
+  "fields": {
+    "password": "pbkdf2_sha256$1000000$nlFPtRoPjvdLKPKliDHv7e$Mx/WSNASSKNOwRSSthXsDpzxOhdL2UMSdiioGdkifmI=",
+    "last_login": "2025-11-03T13:16:56.114Z",
+    "is_superuser": true,
+    "username": "etojama",
+    "first_name": "",
+    "last_name": "",
+    "email": "admin@admin.com",
+    "is_staff": true,
+    "is_active": true,
+    "date_joined": "2025-10-30T10:05:04.391Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "auth.user",
+  "fields": {
+    "password": "pbkdf2_sha256$1000000$p2HUWtOSJ5Pv5juiZoKLuu$5215B4aWudxjFoXNiOqc4lUzTG/Hh7y1tcV2izzHRrQ=",
+    "last_login": "2025-11-03T13:08:35.668Z",
+    "is_superuser": false,
+    "username": "adminn",
+    "first_name": "Etoro",
+    "last_name": "uno",
+    "email": "torohkiss@g.com",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2025-10-31T16:00:44.587Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "taggit.tag",
+  "fields": {
+    "name": "java",
+    "slug": "java"
+  }
+},
+{
+  "model": "taggit.tag",
+  "fields": {
+    "name": "python",
+    "slug": "python"
+  }
+},
+{
+  "model": "taggit.tag",
+  "fields": {
+    "name": "django",
+    "slug": "django"
+  }
+},
+{
+  "model": "taggit.tag",
+  "fields": {
+    "name": "devops",
+    "slug": "devops"
+  }
+},
+{
+  "model": "taggit.tag",
+  "fields": {
+    "name": "javascript",
+    "slug": "javascript"
+  }
+},
+{
+  "model": "taggit.taggeditem",
+  "fields": {
+    "tag": [
+      "java"
+    ],
+    "content_type": [
+      "blog",
+      "post"
+    ],
+    "object_id": 1
+  }
+},
+{
+  "model": "taggit.taggeditem",
+  "fields": {
+    "tag": [
+      "python"
+    ],
+    "content_type": [
+      "blog",
+      "post"
+    ],
+    "object_id": 1
+  }
+},
+{
+  "model": "taggit.taggeditem",
+  "fields": {
+    "tag": [
+      "django"
+    ],
+    "content_type": [
+      "blog",
+      "post"
+    ],
+    "object_id": 2
+  }
+},
+{
+  "model": "taggit.taggeditem",
+  "fields": {
+    "tag": [
+      "python"
+    ],
+    "content_type": [
+      "blog",
+      "post"
+    ],
+    "object_id": 3
+  }
+},
+{
+  "model": "taggit.taggeditem",
+  "fields": {
+    "tag": [
+      "devops"
+    ],
+    "content_type": [
+      "blog",
+      "post"
+    ],
+    "object_id": 4
+  }
+},
+{
+  "model": "taggit.taggeditem",
+  "fields": {
+    "tag": [
+      "java"
+    ],
+    "content_type": [
+      "blog",
+      "post"
+    ],
+    "object_id": 4
+  }
+},
+{
+  "model": "taggit.taggeditem",
+  "fields": {
+    "tag": [
+      "django"
+    ],
+    "content_type": [
+      "blog",
+      "post"
+    ],
+    "object_id": 5
+  }
+},
+{
+  "model": "taggit.taggeditem",
+  "fields": {
+    "tag": [
+      "java"
+    ],
+    "content_type": [
+      "blog",
+      "post"
+    ],
+    "object_id": 5
+  }
+},
+{
+  "model": "taggit.taggeditem",
+  "fields": {
+    "tag": [
+      "javascript"
+    ],
+    "content_type": [
+      "blog",
+      "post"
+    ],
+    "object_id": 5
+  }
+},
+{
+  "model": "taggit.taggeditem",
+  "fields": {
+    "tag": [
+      "django"
+    ],
+    "content_type": [
+      "blog",
+      "post"
+    ],
+    "object_id": 16
+  }
+},
+{
+  "model": "blog.profile",
+  "pk": 1,
+  "fields": {
+    "user": [
+      "etojama"
+    ],
+    "date_of_birth": null,
+    "photo": ""
+  }
+},
+{
+  "model": "blog.profile",
+  "pk": 2,
+  "fields": {
+    "user": [
+      "adminn"
+    ],
+    "date_of_birth": "2025-07-23",
+    "photo": ""
+  }
+},
+{
+  "model": "blog.comment",
+  "pk": 1,
+  "fields": {
+    "post": 7,
+    "author": [
+      "adminn"
+    ],
+    "content": "really",
+    "created": "2025-11-03T12:26:11.887Z",
+    "updated": "2025-11-03T12:29:32.465Z",
+    "approved": false,
+    "active": true
+  }
+},
+{
+  "model": "blog.comment",
+  "pk": 2,
+  "fields": {
+    "post": 7,
+    "author": [
+      "adminn"
+    ],
+    "content": "where is my comment",
+    "created": "2025-11-03T12:26:30.328Z",
+    "updated": "2025-11-03T12:29:32.465Z",
+    "approved": false,
+    "active": true
+  }
+},
+{
+  "model": "blog.comment",
+  "pk": 3,
+  "fields": {
+    "post": 7,
+    "author": [
+      "etojama"
+    ],
+    "content": "i love this",
+    "created": "2025-11-03T12:34:57.549Z",
+    "updated": "2025-11-03T12:34:57.549Z",
+    "approved": true,
+    "active": true
+  }
+},
+{
+  "model": "blog.comment",
+  "pk": 4,
+  "fields": {
+    "post": 7,
+    "author": [
+      "etojama"
+    ],
+    "content": "really?",
+    "created": "2025-11-03T12:53:32.889Z",
+    "updated": "2025-11-03T12:53:32.889Z",
+    "approved": false,
+    "active": true
+  }
+},
+{
+  "model": "blog.comment",
+  "pk": 5,
+  "fields": {
+    "post": 7,
+    "author": [
+      "etojama"
+    ],
+    "content": "really",
+    "created": "2025-11-03T13:08:16.234Z",
+    "updated": "2025-11-03T13:08:16.234Z",
+    "approved": true,
+    "active": true
+  }
+},
+{
+  "model": "blog.comment",
+  "pk": 6,
+  "fields": {
+    "post": 7,
+    "author": [
+      "adminn"
+    ],
+    "content": "reading this again",
+    "created": "2025-11-03T13:08:57.480Z",
+    "updated": "2025-11-03T13:08:57.480Z",
+    "approved": true,
+    "active": true
+  }
+},
+{
+  "model": "blog.post",
+  "pk": 1,
+  "fields": {
+    "title": "we are back",
+    "slug": "we-are-back",
+    "author": [
+      "etojama"
+    ],
+    "content": "We are back agaiin. had issues with github, and had to create anoher repo. so here.\r\nWe are back agaiin. had issues with github, and had to create anoher repo. so here\r\nWe are back agaiin. had issues with github, and had to create anoher repo. so here\r\nWe are back agaiin. had issues with github, and had to create anoher repo. so here\r\nWe are back agaiin. had issues with github, and had to create anoher repo. so here\r\nWe are back agaiin. had issues with github, and had to create anoher repo. so here.\r\nWe are back agaiin. had issues with github, and had to create anoher repo. so here\r\nWe are back agaiin. had issues with github, and had to create anoher repo. so here\r\nWe are back agaiin. had issues with github, and had to create anoher repo. so here\r\nWe are back agaiin. had issues with github, and had to create anoher repo. so here",
+    "created": "2025-10-30T10:11:19.473Z",
+    "updated": "2025-11-03T13:24:19.182Z",
+    "status": "published"
+  }
+},
+{
+  "model": "blog.post",
+  "pk": 2,
+  "fields": {
+    "title": "I love django",
+    "slug": "i-love-django",
+    "author": [
+      "etojama"
+    ],
+    "content": "Nah brooo i so mych love We are back agaiin. had issues with github, and had to create anoher repo. so here.\r\nWe are back agaiin. had issues with github, and had to create anoher repo. so here\r\nWe are back agaiin. had issues with github, and had to create anoher repo. so here django i live it but i like spring better. i so mych love We are back agaiin. had issues with github, and had to create anoher repo. so here.\r\nWe are back agaiin. had issues with github, and had to create anoher repo. so here\r\nWe are back agaiin. had issues with github, and had to create anoher repo. so here django i live it but i like spring better. i so mych love We are back agaiin. had issues with github, and had to create anoher repo. so here.\r\nWe are back agaiin. had issues with github, and had to create anoher repo. so here\r\nWe are back agaiin. had issues with github, and had to create anoher repo. so here django i live it but i like spring better",
+    "created": "2025-10-30T10:12:29.224Z",
+    "updated": "2025-11-03T13:29:42.092Z",
+    "status": "published"
+  }
+},
+{
+  "model": "blog.post",
+  "pk": 3,
+  "fields": {
+    "title": "i want to go fullstack",
+    "slug": "i-want-to-go-fullstack",
+    "author": [
+      "etojama"
+    ],
+    "content": "i think id like to go fullstack. what do ou think. Yes — you can. Two common, safe ways are (A) create a new GitHub repo and push your existing local repo (preserves history — recommended), or (B) create a new repo, clone it, and copy your project files into the clone (start fresh remote history). Below I give step‑by‑step commands for both, with examples using a GitHub personal access token (PAT) and an alternative using the GitHub CLI (gh). Replace names and the token with your values.\r\n\r\nImportant notes before you start\r\n\r\nCreate a PAT in GitHub Settings → Developer settings → Personal access tokens. For private repos you need the repo scope; for public-only, public_repo may be enough.\r\nNever paste tokens into public logs or share them. Use an environment variable (GITHUB_TOKEN) or gh auth login.\r\nDecide whether you want to preserve your local commit history. If yes, use option A.",
+    "created": "2025-10-30T10:13:33.075Z",
+    "updated": "2025-11-03T13:29:59.391Z",
+    "status": "published"
+  }
+},
+{
+  "model": "blog.post",
+  "pk": 4,
+  "fields": {
+    "title": "i think i like devops and kubernates as well",
+    "slug": "i-think-i-like-devops-and-kubernates-as-well",
+    "author": [
+      "etojama"
+    ],
+    "content": "i think i like devops and kubernates as well. Good — your log shows the remote commit (7516af4) is an ancestor of your local branch and your two local commits are the only ones ahead. That means a normal fast‑forward push should be allowed. If the remote still rejects, the safest fallback is to force only if nothing changed on the remote since your fetch.\r\n\r\nOptions — pick one\r\n\r\nSafe forced push (recommended if you fetched right before)\r\nThis will only overwrite the remote if it hasn't changed since your fetch: git push --force-with-lease origin main\r\nNormal push (try first; it might succeed now) git push -u origin main\r\n\r\nMerge remote into local (if you prefer to explicitly integrate before pushing)\r\n\r\n(This will be a no-op fast-forward in your situation) git merge origin/main git push -u origin main\r\nIf a push still fails\r\n\r\nCheck whether the branch is protected on GitHub (protected branches block force pushes). Run: git remote show origin and inspect branch protection in the repository Settings → Branches on GitHub.\r\nIf you want, run git push --force-with-lease origin main now and paste the output here; I’ll help interpret it and proceed.\r\n\r\nYou said: can i create a new",
+    "created": "2025-10-30T10:15:02.239Z",
+    "updated": "2025-11-03T13:30:18.956Z",
+    "status": "draft"
+  }
+},
+{
+  "model": "blog.post",
+  "pk": 5,
+  "fields": {
+    "title": "I will run a bit of javascript",
+    "slug": "i-will-run-a-bit-of-javascript",
+    "author": [
+      "etojama"
+    ],
+    "content": "i will run a bit of javascripot after now. because If we arrive at this view with a GET request, it will create an empty form instance and place it in the template context to be rendered. This is what we can expect to happen the first time we visit the URL.\r\n\r\nIf the form is submitted using a POST request, the view will once again create a form instance and populate it with data from the request: form = NameForm(request.POST) This is called “binding data to the form” (it is now a bound form).\r\n\r\nWe call the form’s is_valid() method; if it’s not True, we go back to the template with the form. This time the form is no longer empty (unbound) so the HTML form will be populated with the data previously submitted, where it can be edited and corrected as required.\r\n\r\nIf is_valid() is True, we’ll now be able to find all the validated form data in its cleaned_data attribute. We can use this data to update the database or do other processing before sending an HTTP redirect to the browser telling it where to go next.",
+    "created": "2025-10-30T13:47:58.834Z",
+    "updated": "2025-11-03T13:30:57.617Z",
+    "status": "published"
+  }
+},
+{
+  "model": "blog.post",
+  "pk": 7,
+  "fields": {
+    "title": "We are back again",
+    "slug": "were-back-again",
+    "author": [
+      "etojama"
+    ],
+    "content": "We now have a working web form, described by a Django Form, processed by a view, and rendered as an HTML <form>.\r\n\r\nThat’s all you need to get started, but the forms framework puts a lot more at your fingertips. Once you understand the basics of the process described above, you should be prepared to understand other features of the forms system and ready to learn a bit more about the underlying machinery.\r\n\r\nMore about Django Form classes¶\r\nAll form classes are created as subclasses of either django.forms.Form or django.forms.ModelForm. You can think of ModelForm as a subclass of Form. Form and ModelForm actually inherit common functionality from a (private) BaseForm class, but this implementation detail is rarely important.",
+    "created": "2025-10-30T14:31:13.201Z",
+    "updated": "2025-10-30T16:11:22.176Z",
+    "status": "published"
+  }
+},
+{
+  "model": "blog.post",
+  "pk": 15,
+  "fields": {
+    "title": "trying something",
+    "slug": "trying-something",
+    "author": [
+      "etojama"
+    ],
+    "content": "im trying something new here. Generally, template authors don’t need to worry about auto-escaping very much. Developers on the Python side (people writing views and custom filters) need to think about the cases in which data shouldn’t be escaped, and mark data appropriately, so things Just Work in the template.\r\n\r\nIf you’re creating a template that might be used in situations where you’re not sure whether auto-escaping is enabled, then add an escape filter to any variable that needs escaping. When auto-escaping is on, there’s no danger of the escape filter double-escaping data – the escape filter does not affect auto-escaped variables.",
+    "created": "2025-10-30T16:04:56.687Z",
+    "updated": "2025-10-31T13:14:59.320Z",
+    "status": "published"
+  }
+},
+{
+  "model": "blog.post",
+  "pk": 16,
+  "fields": {
+    "title": "I'd like ti implement",
+    "slug": "id-like-ti-implement",
+    "author": [
+      "etojama"
+    ],
+    "content": "Id like to implement good stuff with djanngo and springboot",
+    "created": "2025-11-03T15:26:27.341Z",
+    "updated": "2025-11-03T15:26:27.341Z",
+    "status": "published"
+  }
+}
+]
