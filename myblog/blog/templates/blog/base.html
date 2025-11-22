@@ -3,14 +3,16 @@
 <html lang="en-US">
   <head>
 	  <title>{% block title %}My Blog{% endblock %}</title>
-	  <link href="{% static "css/base.css" %}" rel="stylesheet">
+	  <link rel="stylesheet" href="{% static 'blog/base.css' %}">
   </head>
   <body>
-	  <div>
-		  <span>Blogg</span>
-		  <h3><a href="{% url "blog:post_list" %}">Home</a></h3>
-		  {% if request.user.is_authenticated %}
-		    <ul>
+	  <div class="header">
+		  <div class="header-blog">
+			  <span>Blogg</span>
+			  <h3><a href="{% url "blog:post_list" %}">Home</a></h3>
+			  {% if request.user.is_authenticated %}
+		  </div>
+		  <ul>
 			    <li {% if section == "post_list" %}class="selected"{% endif %}>
 				    <a href="{% url "blog:post_list" %}">My Account</a>
 			    </li>
@@ -20,7 +22,7 @@
 			    <li {% if section == "people" %}class="selected"{% endif %}>
 				       <a href="#">People</a>
 			    </li>
-		    </ul>
+		  </ul>
 		  {% endif %}
 		  <span>
 			  {% if request.user.is_authenticated %}
@@ -35,7 +37,7 @@
 		  </span>
 
 	  </div>
-	  <div>
+	  <div class="content">
 		  {% block content %}{% endblock %}
 	  </div>
   </body>
