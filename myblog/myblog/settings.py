@@ -143,7 +143,7 @@ STATIC_URL = 'static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-LOGIN_REDIRECT_URL = 'blog:dashboard'
+LOGIN_REDIRECT_URL = 'blog:post_list'
 LOGIN_URL = 'blog:login'
 LOGOUT_URL = 'blog:logout'
 

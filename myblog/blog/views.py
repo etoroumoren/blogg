@@ -42,7 +42,7 @@ def register(request):
                 user_form.cleaned_data['password']
             )
             new_user.save()
-            Profile.objects.create(user=new_user)
+            Profile.objects.get_or_create(user=new_user)
             return render(
                 request,
                 'blog/register_done.html',
@@ -52,13 +52,13 @@ def register(request):
             )
     else:
         user_form = UserRegistrationForm()
-        return render(
-            request,
-            'blog/register.html',
-            {
-                'user_form': user_form
-            }
-        )
+    return render(
+        request,
+        'blog/register.html',
+        {
+            'user_form': user_form
+        }
+    )
 
 
 @login_required

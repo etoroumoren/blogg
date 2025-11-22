@@ -3,6 +3,8 @@ from django import forms
 from django.utils.text import slugify
 from .models import Comment, Post, Profile
 
+User = get_user_model()
+
 
 class PostForm(forms.ModelForm):
     class Meta:

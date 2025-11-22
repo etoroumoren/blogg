@@ -8,6 +8,7 @@
   <body>
 	  <div>
 		  <span>Blogg</span>
+		  <h3><a href="{% url "blog:post_list" %}">Home</a></h3>
 		  {% if request.user.is_authenticated %}
 		    <ul>
 			    <li {% if section == "post_list" %}class="selected"{% endif %}>
